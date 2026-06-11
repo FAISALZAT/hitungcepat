@@ -510,9 +510,235 @@ body{
 
 }
 
+
+/* NEW FEATURES */
+
+.combo-bar{
+  margin-top:14px;
+  font-size:16px;
+  color:#ffe600;
+  font-weight:700;
+  text-align:center;
+}
+
+.progress-wrap{
+  margin-top:18px;
+  width:100%;
+  height:12px;
+  background:rgba(255,255,255,0.08);
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.progress-bar{
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,#00e5ff,#00ff88);
+  transition:0.8s linear;
+}
+
+.streak{
+  margin-top:14px;
+  color:#00ffbf;
+  font-weight:700;
+}
+
+.powerup{
+  margin-top:14px;
+  color:#ffb700;
+  font-weight:700;
+}
+
+.fade-in{
+  animation:fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+/* SUPER FEATURES */
+
+.answer-btn:hover{
+  transform:translateY(-5px) scale(1.04);
+  box-shadow:0 0 24px rgba(0,229,255,0.5);
+}
+
+.play-btn:hover,
+.start-btn:hover{
+  transform:scale(1.03);
+  box-shadow:0 0 28px rgba(0,255,170,0.5);
+}
+
+.glow-correct{
+  animation:correctFlash 0.5s ease;
+}
+
+@keyframes correctFlash{
+  0%{
+    box-shadow:0 0 0 rgba(0,255,120,0);
+  }
+  50%{
+    box-shadow:0 0 40px rgba(0,255,120,0.8);
+  }
+  100%{
+    box-shadow:0 0 0 rgba(0,255,120,0);
+  }
+}
+
+.shake{
+  animation:shake 0.4s;
+}
+
+@keyframes shake{
+  0%{transform:translateX(0);}
+  25%{transform:translateX(-8px);}
+  50%{transform:translateX(8px);}
+  75%{transform:translateX(-8px);}
+  100%{transform:translateX(0);}
+}
+
+.theme-btn{
+  margin-top:12px;
+  width:100%;
+  height:54px;
+  border:none;
+  border-radius:16px;
+  cursor:pointer;
+  font-weight:700;
+  background:linear-gradient(90deg,#ff00d4,#00e5ff);
+  color:white;
+}
+
+
+/* NEW EPIC FEATURES */
+
+.correct-answer{
+  background:linear-gradient(90deg,#00ff88,#00e676)!important;
+  color:#111!important;
+  box-shadow:0 0 25px rgba(0,255,120,0.7)!important;
+}
+
+.wrong-answer{
+  background:linear-gradient(90deg,#ff1744,#ff5252)!important;
+  color:white!important;
+  box-shadow:0 0 25px rgba(255,0,80,0.7)!important;
+}
+
+.level-up{
+  animation:levelUp 0.8s ease;
+}
+
+@keyframes levelUp{
+  0%{
+    transform:scale(1);
+  }
+  50%{
+    transform:scale(1.08);
+  }
+  100%{
+    transform:scale(1);
+  }
+}
+
+.xp-bar-wrap{
+  margin-top:16px;
+  height:12px;
+  border-radius:999px;
+  overflow:hidden;
+  background:rgba(255,255,255,0.08);
+}
+
+.xp-bar{
+  width:0%;
+  height:100%;
+  background:linear-gradient(90deg,#ffe600,#ff9100);
+  transition:0.3s;
+}
+
+.player-level{
+  margin-top:10px;
+  color:#ffe600;
+  font-weight:700;
+  font-size:15px;
+}
+
+.speed-text{
+  margin-top:10px;
+  color:#00e5ff;
+  font-size:14px;
+  font-weight:700;
+}
+
+
+.mute-icon{
+  position:fixed;
+  top:16px;
+  right:16px;
+  width:48px;
+  height:48px;
+  border:none;
+  border-radius:50%;
+  cursor:pointer;
+  z-index:9999;
+  font-size:22px;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(12px);
+  color:white;
+  box-shadow:0 4px 16px rgba(0,0,0,0.25);
+}
+
+
+.mute-fab{
+ position:fixed;
+ top:18px !important;
+ right:18px !important;
+ top:18px;
+ right:18px;
+ width:56px;
+ height:56px;
+ border:none;
+ border-radius:50%;
+ cursor:pointer;
+ z-index:9999;
+ backdrop-filter:blur(14px);
+ background:rgba(255,255,255,.12);
+ box-shadow:0 8px 24px rgba(0,0,0,.25);
+ transition:transform .25s ease, background .25s ease;
+ overflow:hidden;
+}
+.mute-fab:hover{transform:scale(1.08)}
+.mute-fab.muted{transform:scale(.92) rotate(-10deg);}
+.mute-fab svg{width:28px;height:28px;fill:white}
+.ripple{
+ position:absolute;border-radius:50%;
+ transform:scale(0);
+ animation:ripple .6s linear;
+ background:rgba(255,255,255,.35);
+}
+@keyframes ripple{
+ to{transform:scale(4);opacity:0}
+}
+
 </style>
 </head>
 <body>
+
+<button id="muteBtn" class="mute-fab" onclick="toggleMusic(event)">
+<svg id="soundIcon" viewBox="0 0 24 24">
+<path d="M14 3.23v17.54L7.91 16H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h3.91L14 3.23zM17.5 12a5.5 5.5 0 0 0-2.03-4.25v8.5A5.5 5.5 0 0 0 17.5 12zm2.5 0a8 8 0 0 1-3.03 6.28v-2.02a6 6 0 0 0 0-8.52V5.72A8 8 0 0 1 20 12z"/>
+</svg>
+</button>
+
+
 
 <!-- FALLING MATH -->
 <div id="fallingMath"></div>
@@ -532,7 +758,10 @@ body{
 
     <div class="start-card glass">
 
-      <button class="start-btn"
+      
+
+
+<button class="start-btn"
       onclick="openMenu()">
       ▶ START
       </button>
@@ -568,21 +797,53 @@ body{
     </div>
 
 
-    </div>
+    <div class="glass" style="margin-top:20px;padding:18px;text-align:center;">
+  <div style="font-size:18px;font-weight:800;color:#00e5ff;">
+    🎮 FITUR BARU
+  </div>
+
+  <div style="margin-top:14px;font-size:14px;line-height:1.8;color:#ddd;">
+    ⚡ Combo Mode<br>
+    🔥 Streak Counter<br>
+    🎁 Bonus Score<br>
+    ⌨ Keyboard Control<br>
+    🎨 Animasi Baru<br>
+    🌈 Efek Glow<br>
+    💥 Efek Jawaban Benar<br>
+    📈 Progress Bar<br>
+    🧠 Random Challenge<br>
+    🎵 Sound Arcade
+  </div>
+
+</div>
 
   </div>
+
+</div>
+
 
   <!-- MENU -->
   <div class="menu-screen" id="menuScreen">
 
     <div class="menu-card glass">
 
-      <input
-      type="text"
-      id="playerName"
-      class="name-input"
-      placeholder="Masukkan Nama"
-      maxlength="12">
+      
+
+      
+      <div class="section-title">
+        ⏳ Mode Permainan
+      </div>
+
+      <div class="option-group">
+        <button class="option-btn active" onclick="selectTimerMode(true,this)">
+        ⏱ MENGGUNAKAN WAKTU
+        </button>
+
+        <button class="option-btn" onclick="selectTimerMode(false,this)">
+        ♾ TANPA WAKTU
+        </button>
+      </div>
+
 
       <div class="section-title">
         🎯 Pilih Level
@@ -613,6 +874,7 @@ body{
 
       </div>
 
+      <div id="timeSection">
       <div class="section-title">
         ⏰ Pilih Waktu
       </div>
@@ -640,11 +902,18 @@ body{
         </button>
 
       </div>
+      </div>
 
       <button class="play-btn"
       onclick="startGame()">
       ▶ MULAI GAME
       </button>
+
+<button class="theme-btn" onclick="changeTheme()">
+🌈 GANTI TEMA
+</button>
+
+
 
     </div>
 
@@ -683,11 +952,19 @@ body{
       5 + 5
       </div>
 
-      <div class="message"
-      id="message"></div>
+      <div class="message" id="message"></div><div id="dynamicDifficulty" style="margin-top:8px;color:#ffe600;font-weight:700;">Difficulty Lv. 1</div>
+      
+
+      
+
+      <div class="powerup" id="powerupText">
+        
+      </div>
+
 
       <div class="game-over"
       id="gameOver"></div>
+
 
     </div>
 
@@ -716,6 +993,7 @@ body{
     <div class="bottom-buttons">
 
       <button class="bottom-btn restart-btn"
+      id="restartBtn"
       onclick="restartGame()">
       🔄 Ulang
       </button>
@@ -727,11 +1005,11 @@ body{
 
     </div>
 
-    </div>
+</div>
 
-    <div class="leaderboard glass">
-      <h2>🏆 TOP 10 ONLINE</h2>
-      <div id="leaderboardList"></div>
+</div>
+
+
     </div>
 
 </div>
@@ -775,12 +1053,18 @@ getFirestore(app);
 /* GAME VARIABLES */
 
 let score = 0;
+let correctCount = 0;
+let wrongCount = 0;
+let questionStartTime = 0;
+let totalAnswerTime = 0;
+let difficultyBoost = 0;
 
-let bestScore =
-0;
+
+let bestScore = 0;
 
 let selectedLevel = "veryeasy";
 let selectedTime = 60;
+let useTimer = true;
 
 let correctAnswer = 0;
 
@@ -788,7 +1072,13 @@ let timer = null;
 let timeLeft = 60;
 let gameActive = false;
 
-bestScore = parseInt(localStorage.getItem("hitungcepat_best") || "0");
+
+function getBestKey(){
+  return "hitungcepat_best_" + selectedLevel;
+}
+
+bestScore = parseInt(localStorage.getItem(getBestKey())) || 0;
+
 
 document.getElementById("bestScore")
 .innerText = bestScore;
@@ -854,6 +1144,8 @@ window.openMenu = function(){
 
   document.getElementById("menuScreen")
   .style.display = "block";
+
+  document.querySelector(".timer").style.display = "block";
 }
 
 /* LEVEL */
@@ -863,13 +1155,31 @@ window.selectLevel = function(level,btn){
   selectedLevel = level;
 
   const buttons =
-  document.querySelectorAll(".option-group")[0]
-  .querySelectorAll(".option-btn");
+  btn.parentElement.querySelectorAll(".option-btn");
 
   buttons.forEach(button =>
   button.classList.remove("active"));
 
   btn.classList.add("active");
+
+  bestScore = parseInt(localStorage.getItem(getBestKey())) || 0;
+  const bestEl=document.getElementById("bestScore");
+  if(bestEl) bestEl.innerText = bestScore;
+}
+
+window.selectTimerMode = function(mode,btn){
+
+  useTimer = mode;
+
+  const buttons = btn.parentElement.querySelectorAll(".option-btn");
+  buttons.forEach(b=>b.classList.remove("active"));
+
+  btn.classList.add("active");
+
+  const timeSection = document.getElementById("timeSection");
+  if(timeSection){
+    timeSection.style.display = useTimer ? "block" : "none";
+  }
 }
 
 /* TIME */
@@ -879,7 +1189,7 @@ window.selectTime = function(time,btn){
   selectedTime = time;
 
   const buttons =
-  document.querySelectorAll(".option-group")[1]
+  document.querySelector("#timeSection .option-group")
   .querySelectorAll(".option-btn");
 
   buttons.forEach(button =>
@@ -906,6 +1216,10 @@ window.startGame = function(){
   clearInterval(timer);
 
   score = 0;
+  correctCount = 0;
+  wrongCount = 0;
+  totalAnswerTime = 0;
+  difficultyBoost = 0;
   timeLeft = selectedTime;
   gameActive = true;
 
@@ -921,6 +1235,9 @@ window.startGame = function(){
   document.getElementById("gameOver")
   .innerText = "";
 
+  document.getElementById("restartBtn").disabled = true;
+  document.getElementById("restartBtn").style.opacity = "0.5";
+
   document.getElementById("menuScreen")
   .style.display = "none";
 
@@ -931,8 +1248,16 @@ window.startGame = function(){
   .innerText =
   selectedLevel.toUpperCase();
 
-  generateQuestion();
-  startTimer();
+  
+    document.getElementById("question").classList.add("fade-in");
+    generateQuestion();
+
+  if(useTimer){
+    document.querySelector(".timer").style.display = "block";
+    startTimer();
+  }else{
+    document.querySelector(".timer").style.display = "none";
+  }
 
 }
 
@@ -949,8 +1274,8 @@ function generateQuestion(){
   if(selectedLevel === "veryeasy"){
 
     operator = "+";
-    num1 = random(1,15);
-    num2 = random(1,15);
+    num1 = random(1,15 + difficultyBoost*5);
+    num2 = random(1,15 + difficultyBoost*5);
     correctAnswer = num1 + num2;
   }
 
@@ -959,8 +1284,8 @@ function generateQuestion(){
     const ops = ["+","-"];
     operator = ops[random(0,1)];
 
-    num1 = random(1,30);
-    num2 = random(1,30);
+    num1 = random(1,30 + difficultyBoost*8);
+    num2 = random(1,30 + difficultyBoost*8);
 
     if(operator === "+"){
       correctAnswer = num1 + num2;
@@ -978,8 +1303,8 @@ function generateQuestion(){
     operator = ops[random(0,1)];
 
     if(operator === "×"){
-      num1 = random(1,12);
-      num2 = random(1,12);
+      num1 = random(1,12 + difficultyBoost);
+      num2 = random(1,12 + difficultyBoost);
       correctAnswer = num1 * num2;
     }else{
       num2 = random(1,12);
@@ -999,6 +1324,7 @@ function generateQuestion(){
 
       document.getElementById("question").innerText = `${n}!`;
       generateChoices();
+  questionStartTime = Date.now();
       return;
     }else{
       const base = random(20,500);
@@ -1018,24 +1344,53 @@ function generateQuestion(){
   `${num1} ${operator} ${num2}`;
 
   generateChoices();
+  questionStartTime = Date.now();
 }
 
 /* CHOICES */
 
+
 function generateChoices(){
+
+  for(let i=0;i<3;i++){
+    document.getElementById("btn"+i)
+    .classList.remove("correct-answer","wrong-answer");
+  }
 
   let answers = [correctAnswer];
 
+  let maxOffset;
+
+  switch(selectedLevel){
+    case "veryeasy":
+      maxOffset = 2;
+      break;
+    case "easy":
+      maxOffset = 4;
+      break;
+    case "normal":
+      maxOffset = 8;
+      break;
+    case "hard":
+      maxOffset = Math.max(10, Math.floor(correctAnswer * 0.15));
+      break;
+    default:
+      maxOffset = 3;
+  }
+
   while(answers.length < 3){
 
-    let fake =
-    correctAnswer + random(-15,15);
+    let offset;
 
-    if(
-      fake >= 0 &&
-      fake !== correctAnswer &&
-      !answers.includes(fake)
-    ){
+    do{
+      offset =
+      Math.floor(Math.random() * (maxOffset * 2 + 1))
+      - maxOffset;
+    }while(offset === 0);
+
+    let fake = correctAnswer + offset;
+
+    if(fake >= 0 && !answers.includes(fake)){
       answers.push(fake);
     }
   }
@@ -1043,14 +1398,12 @@ function generateChoices(){
   answers.sort(() => Math.random() - 0.5);
 
   for(let i=0;i<3;i++){
-
-    const btn =
-    document.getElementById("btn"+i);
-
+    const btn = document.getElementById("btn"+i);
     btn.innerText = answers[i];
     btn.dataset.value = answers[i];
   }
 }
+
 
 /* ANSWER */
 
@@ -1064,27 +1417,48 @@ window.selectAnswer = async function(index){
     .dataset.value
   );
 
+  const answerDuration = (Date.now() - questionStartTime)/1000;
+  totalAnswerTime += answerDuration;
+
   const message =
   document.getElementById("message");
 
   if(selected === correctAnswer){
 
+    
     playCorrectSound();
+    flashEffect();
+    
+    
 
+    
     score++;
+    correctCount++;
+    if(score % 5 === 0) difficultyBoost++;
+    
+    
 
-    document.getElementById("score")
-    .innerText = score;
+    // bonus removed
+
+    
+    
+    
+    
+    
+    
+
+    document.getElementById("score").innerText = score;
+    document.getElementById("dynamicDifficulty").innerText = `Difficulty Lv. ${difficultyBoost+1}`;
 
     message.style.color = "#00ff9d";
-    message.innerText = "🔥 BENAR!";
+    message.innerText = "🔥 BENAR +1 SCORE!";
 
     if(score > bestScore){
 
       bestScore = score;
 
       localStorage.setItem(
-        "hitungcepat_best",
+        getBestKey(),
         bestScore
       );
 
@@ -1092,7 +1466,10 @@ window.selectAnswer = async function(index){
       .innerText = bestScore;
     }
 
+    
+    document.getElementById("question").classList.add("fade-in");
     generateQuestion();
+    
   }
 
   else{
@@ -1102,9 +1479,54 @@ window.selectAnswer = async function(index){
     gameActive = false;
 
     message.style.color = "#ff5e7e";
+    
     playWrongSound();
 
-    message.innerText = "❌ SALAH!";
+    document.querySelector(".board")
+    .classList.add("shake");
+
+    setTimeout(()=>{
+      document.querySelector(".board")
+      .classList.remove("shake");
+    },400);
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    message.innerText = "❌ JAWABAN SALAH!";
+
+    document.getElementById("restartBtn").disabled = false;
+    document.getElementById("restartBtn").style.opacity = "1";
+
+    for(let i=0;i<3;i++){
+
+      const btn =
+      document.getElementById("btn"+i);
+
+      const value =
+      parseInt(btn.dataset.value);
+
+      if(value === correctAnswer){
+        btn.classList.add("correct-answer");
+      }
+
+      if(value === selected){
+        btn.classList.add("wrong-answer");
+      }
+    }
+    
 
     document.getElementById("question")
     .innerText = "GAME OVER";
@@ -1113,14 +1535,107 @@ window.selectAnswer = async function(index){
     .innerText =
     `🏆 SKOR AKHIR: ${score}`;
 
-    const playerName =
-    document.getElementById("playerName")
-    .value || "Player";
+      document.getElementById("restartBtn").disabled = false;
+      document.getElementById("restartBtn").style.opacity = "1";
+
+    const playerName = "Player";
 
     await saveScore(playerName,score);
 
     }
 }
+
+
+
+
+
+/* LEVEL SYSTEM REMOVED */
+
+/* LEVEL UP SOUND */
+
+function playLevelUpSound(){
+
+  initAudio();
+
+  const notes = [523,659,784,1046];
+
+  notes.forEach((freq,i)=>{
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.type = "triangle";
+    osc.frequency.value = freq;
+
+    gain.gain.setValueAtTime(
+      0.12,
+      audioCtx.currentTime + i*0.1
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+      0.001,
+      audioCtx.currentTime + i*0.1 + 0.2
+    );
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.start(audioCtx.currentTime + i*0.1);
+    osc.stop(audioCtx.currentTime + i*0.1 + 0.2);
+  });
+}
+
+/* SUPER GAME FEATURES */
+
+let currentTheme = 0;
+
+const themes = [
+  "linear-gradient(135deg,#090814,#16102f,#0a0a16)",
+  "linear-gradient(135deg,#00111f,#002d3a,#000814)",
+  "linear-gradient(135deg,#2d0036,#12002f,#090014)",
+  "linear-gradient(135deg,#052b1f,#041c32,#000000)"
+];
+
+window.changeTheme = function(){
+
+  currentTheme++;
+
+  if(currentTheme >= themes.length){
+    currentTheme = 0;
+  }
+
+  document.body.style.background =
+  themes[currentTheme];
+
+}
+
+/* PARTICLE EFFECT */
+
+function flashEffect(){
+
+  const board = document.querySelector(".board");
+
+  board.classList.add("glow-correct");
+
+  setTimeout(()=>{
+    board.classList.remove("glow-correct");
+  },500);
+}
+
+
+/* EXTRA FEATURES */
+
+/* KEYBOARD SUPPORT */
+document.addEventListener("keydown",(e)=>{
+
+  if(!gameActive) return;
+
+  if(e.key === "1") selectAnswer(0);
+  if(e.key === "2") selectAnswer(1);
+  if(e.key === "3") selectAnswer(2);
+
+});
+
 
 /* TIMER */
 
@@ -1133,6 +1648,8 @@ function startTimer(){
     document.getElementById("time")
     .innerText = timeLeft;
 
+    updateProgressBar();
+
     if(timeLeft <= 0){
 
       clearInterval(timer);
@@ -1140,11 +1657,15 @@ function startTimer(){
       gameActive = false;
 
       document.getElementById("question")
-      .innerText = "WAKTU HABIS";
+      .innerText = "GAME OVER";
 
-      document.getElementById("gameOver")
-      .innerText =
-      `🏆 SKOR AKHIR: ${score}`;
+      document.getElementById("message").innerText = "⏰ WAKTU HABIS!";
+      document.getElementById("gameOver").innerText = `🏆 SKOR AKHIR: ${score}`;
+
+      document.getElementById("restartBtn").disabled = false;
+      document.getElementById("restartBtn").style.opacity = "1";
+
+      saveScore("Player", score);
     }
 
   },1000);
@@ -1153,6 +1674,8 @@ function startTimer(){
 /* RESTART */
 
 window.restartGame = function(){
+
+  if(gameActive) return;
 
   startGame();
 }
@@ -1170,6 +1693,8 @@ window.backMenu = function(){
 
   document.getElementById("menuScreen")
   .style.display = "block";
+
+  document.querySelector(".timer").style.display = "block";
 }
 
 
@@ -1233,29 +1758,81 @@ function playWrongSound(){
 }
 
 
+
+let musicMuted = false;
+
+window.toggleMusic = function(){
+  musicMuted = !musicMuted;
+
+  const btn = document.getElementById("muteBtn");
+  btn.innerText = musicMuted ? "🔇" : "🔊";
+}
+
+
+window.toggleMusic = function(e){
+  musicMuted = !musicMuted;
+  const btn = document.getElementById('muteBtn');
+  const icon = document.getElementById('soundIcon');
+
+  btn.classList.toggle('muted', musicMuted);
+
+  icon.innerHTML = musicMuted
+  ? '<path d="M16.5 12c0-1.2-.34-2.32-.93-3.27l1.45-1.45A7.94 7.94 0 0 1 20 12c0 2.21-.9 4.21-2.35 5.66l-1.42-1.42A5.96 5.96 0 0 0 16.5 12zM3 4.27 4.28 3 21 19.72 19.73 21l-3.5-3.5L14 20.77V15.8l-4-4V16H7.91L4 12.09V9h3.91L14 3.23v3.49L19.73 12 3 4.27z"/>'
+  : '<path d="M14 3.23v17.54L7.91 16H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h3.91L14 3.23zM17.5 12a5.5 5.5 0 0 0-2.03-4.25v8.5A5.5 5.5 0 0 0 17.5 12zm2.5 0a8 8 0 0 1-3.03 6.28v-2.02a6 6 0 0 0 0-8.52V5.72A8 8 0 0 1 20 12z"/>';
+
+  const ripple=document.createElement('span');
+  ripple.className='ripple';
+  const rect=btn.getBoundingClientRect();
+  ripple.style.width=ripple.style.height='20px';
+  ripple.style.left=(e.offsetX-10)+'px';
+  ripple.style.top=(e.offsetY-10)+'px';
+  btn.appendChild(ripple);
+  setTimeout(()=>ripple.remove(),600);
+}
+
 let bgmStarted = false;
+
 function startBackgroundMusic(){
+
   if(bgmStarted) return;
+
   bgmStarted = true;
 
+  const melody = [262,330,392,523,392,330,262,523];
+
+  let noteIndex = 0;
+
   setInterval(()=>{
-    if(!audioCtx) return;
+
+    if(!audioCtx || musicMuted) return;
 
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
 
-    const notes = [220,262,330,392,330,262];
-    osc.frequency.value = notes[Math.floor(Math.random()*notes.length)];
-    osc.type = "sine";
+    osc.type = "sawtooth";
 
-    gain.gain.value = 0.03;
+    osc.frequency.value =
+    melody[noteIndex % melody.length];
+
+    gain.gain.setValueAtTime(
+      0.04,
+      audioCtx.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+      0.001,
+      audioCtx.currentTime + 0.35
+    );
 
     osc.connect(gain);
     gain.connect(audioCtx.destination);
 
     osc.start();
     osc.stop(audioCtx.currentTime + 0.35);
-  }, 450);
+
+    noteIndex++;
+
+  },320);
 }
 
 </script>
